@@ -1,0 +1,549 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Jira" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
+    <x:Property Name="out_formattedLog" Type="OutArgument(x:String)" />
+    <x:Property Name="out_clockValue" Type="OutArgument(x:String)" />
+    <x:Property Name="out_currentDate" Type="OutArgument(s:DateTime)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1038,6738</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Jira_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Orchestrator.Client</x:String>
+      <x:String>Microsoft.Rest</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.OrchestratorClient</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>Microsoft.Rest.ClientRuntime</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Jira" sap:VirtualizedContainerService.HintSize="1048,7706" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Clockwork Free - Jira" sap:VirtualizedContainerService.HintSize="986,7595" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" ScopeGuid="d3fc6328-6df2-4285-8783-ac9c7810923d" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="952,7378" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="jiraDate" />
+              <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dtJiraClockwork" />
+              <Variable x:TypeArguments="x:Int32" Name="targetCol" />
+              <Variable x:TypeArguments="x:String" Name="StrdtJira" />
+              <Variable x:TypeArguments="x:String" Name="name" />
+              <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dtWorklogs" />
+              <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
+              <Variable x:TypeArguments="x:String" Name="firstHeader" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NNavigateBrowser Action="Refresh" DisplayName="Navigate Browser - Refresh" sap:VirtualizedContainerService.HintSize="890,82" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_1" Version="V3" />
+            <Assign sap:VirtualizedContainerService.HintSize="890,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:DateTime">[out_currentDate]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="890,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[jiraDate]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[out_currentDate.ToString("dd ") &amp; out_currentDate.ToString("ddd").ToUpper().Substring(0, 2)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dtJiraClockwork]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='CV' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='v Users K' ReferenceIdx='0' Name='v Users K'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='17 WE' ReferenceIdx='1' Name='17 WE'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='18 TH' ReferenceIdx='2' Name='18 TH'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='19 FR' ReferenceIdx='3' Name='19 FR'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='20 21 SA SU' ReferenceIdx='4' Name='20 21 SA SU'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='22 23 MO TU' ReferenceIdx='5' Name='22 23 MO TU'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='24 WE' ReferenceIdx='6' Name='24 WE'&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xD;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xD;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xD;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&lt;/Table&gt;" sap:VirtualizedContainerService.HintSize="890,157" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="d3fc6328-6df2-4285-8783-ac9c7810923d" Version="V3">
+              <uix:NExtractData.ExtractMetadata>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </uix:NExtractData.ExtractMetadata>
+              <uix:NExtractData.Target>
+                <uix:TargetAnchorable BrowserURL="https://ociincentroautomation.atlassian.net/projects/OT?selectedItem=com.atlassian.plugins.atlassian-connect-plugin:clockwork-free-cloud__project-timesheet-item#!reportName=Clockwork%20Timesheet&amp;scope%5BstartingAt%5D=-7&amp;scope%5BendingAt%5D=0&amp;scope%5BselectedProjects%5D%5B%5D=10124&amp;selectedBreakdowns%5B%5D=users&amp;period=PERIOD_DAY&amp;estimateColumnsEnabled=false" CvElementArea="270, 562, 835, 200" CvType="Table" DesignTimeRectangle="270, 562, 835, 200" DesignTimeScaleFactor="1" ElementType="Table" FriendlyName="'chrome.exe Clockwork'" Guid="5638b5af-ce0f-47d6-8390-700ffd4d85cd" InformativeScreenshot="c1cc9445dbce3b71808e7057b14d19af.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Clockwork Free - Jira' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive" />
+              </uix:NExtractData.Target>
+            </uix:NExtractData>
+            <Assign sap2010:Annotation.AnnotationText="IndexOf method returns the index of the first occurrence of the specified value in the column collection. If formattedDate is not found, IndexOf returns -1." sap:VirtualizedContainerService.HintSize="890,139" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[targetCol]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[dtJiraClockwork.Columns.IndexOf(jiraDate)]</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+            <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="890,292" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Pick your name bestie :" Options="[{&quot;Fathimah Azzahra&quot;, &quot;Vidya Chandradev&quot;}]" Title="Who you??">
+              <ui:InputDialog.Result>
+                <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
+              </ui:InputDialog.Result>
+            </ui:InputDialog>
+            <Assign sap:VirtualizedContainerService.HintSize="890,82" sap2010:WorkflowViewState.IdRef="Assign_12">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[firstHeader]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[dtJiraClockwork.Columns(0).ColumnName]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:FilterDataTable DataTable="[dtJiraClockwork]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="890,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtJiraClockwork]" SelectColumnsMode="Remove">
+              <ui:FilterDataTable.Filters>
+                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                  <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                    <ui:FilterOperationArgument.Column>
+                      <InArgument x:TypeArguments="x:String">[firstHeader]</InArgument>
+                    </ui:FilterOperationArgument.Column>
+                    <ui:FilterOperationArgument.Operand>
+                      <InArgument x:TypeArguments="x:String">[name]</InArgument>
+                    </ui:FilterOperationArgument.Operand>
+                  </ui:FilterOperationArgument>
+                </scg:List>
+              </ui:FilterDataTable.Filters>
+              <ui:FilterDataTable.SelectColumns>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <x:Null />
+                </scg:List>
+              </ui:FilterDataTable.SelectColumns>
+            </ui:FilterDataTable>
+            <ui:OutputDataTable DataTable="[dtJiraClockwork]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="890,80" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[StrdtJira]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="890,143" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[StrdtJira]" />
+            <If Condition="[dtJiraClockwork.Rows.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="890,5565" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="856,5210" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataRow" Name="rowOfInterest" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap2010:Annotation.AnnotationText="This statement assigns the first row of filteredDt to the variable rowOfInterest. After this assignment, rowOfInterest contains all the data of the first row of filteredDt, and you can access the individual cell values of this row using column indexes or column names." sap:VirtualizedContainerService.HintSize="814,154" sap2010:WorkflowViewState.IdRef="Assign_6">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sd:DataRow">[rowOfInterest]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sd:DataRow">[dtJiraClockwork.Rows(0)]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="814,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_clockValue]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[rowOfInterest(jiraDate).ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="814,143" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Clock Value : &quot; + out_clockValue + &quot; and Current Date : &quot; + jiraDate]" />
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Click Clockwork based " sap:VirtualizedContainerService.HintSize="814,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d3fc6328-6df2-4285-8783-ac9c7810923d" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://app.clockwork.report/panels/projects/timesheets?is_clockwork_active=false&amp;is_next_gen_project=false&amp;issue_id=&amp;issue_key=&amp;permissions%5BADMINISTER%5D=false&amp;permissions%5BADMINISTER_PROJECTS%5D=true&amp;permissions%5BDELETE_ALL_WORKLOGS%5D=true&amp;permissions%5BDELETE_OWN_WORKLOGS%5D=true&amp;permissions%5BEDIT_ALL_WORKLOGS%5D=true&amp;permissions%5BEDIT_ISSUES%5D=true&amp;permissions%5BEDIT_OWN_WORKLOGS%5D=true&amp;permissions%5BWORK_ON_ISSUES%5D=true&amp;permissions%5Bclockwork-free-cloud__edit-all-working-hours%5D=true&amp;permissions%5Bclockwork-free-cloud__edit-own-working-hours%5D=true&amp;permissions%5Bclockwork-free-cloud__log-work-for-others%5D=true&amp;permissions%5Bclockwork-free-cloud__timesheets%5D=true&amp;permissions%5Bclockwork-free-cloud__view-all-worklogs%5D=true&amp;permissions%5Bclockwork-free-cloud__view-issue-hours%5D=true&amp;project_id=10124&amp;project_key=OT&amp;xdm_e=https%3A%2F%2Fociincentroautomation.atlassian.net&amp;xdm_c=channel-clockwork-free-cloud__project-timesheet-item&amp;cp=&amp;xdm_deprecated_addon_key_do_not_use=clockwork-free-cloud&amp;lic=none&amp;cv=1001.0.0-SNAPSHOT&amp;jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3MTIwMjA6MjRmMzI0MTktZmI2OC00NmQwLTk3NTYtZmRiNWZlMzZjZjIzIiwicXNoIjoiYzVhM2FkYjRmYTFhNmY1OGUxZjEwYzY4ZmM5MTg0ZjFlYzVhOWQyNGQzYWMwYTBmNTRhODYzMWRkYTJkNmMzZCIsImlzcyI6ImJjNTNkOGVhLTNhOWQtM2ZlZS1hNjBmLTM2ZjlmMjZlY2Q5MSIsImNvbnRleHQiOnt9LCJleHAiOjE3MDU5ODg0NTksImlhdCI6MTcwNTk4NzU1OX0.XCvEqpoMW4c26ZyiwnrHdaREqIY8sOLOEwsu9Cse18c#/reportName=Clockwork%20Timesheet&amp;scope[startingAt]=-7&amp;scope[endingAt]=0&amp;scope[selectedProjects][]=10124&amp;selectedBreakdowns[]=users&amp;period=PERIOD_DAY&amp;estimateColumnsEnabled=false" CvTextArea="1005, 791, 35, 13" CvTextArgument="08:00" CvType="Text" DesignTimeRectangle="1006, 788, 33, 19" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'08:00'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl id='clockwork*' tag='*' /&gt;&lt;webctrl aaname='{0}' tag='SPAN' /&gt;&quot;, out_clockValue)]" FuzzyAccuracy="0.78" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl id='clockwork*' tag='*' /&gt;&lt;webctrl aaname='{0}' tag='SPAN' /&gt;&quot;, out_clockValue)]" Guid="6bb57e65-da3a-4b78-9cc0-b16faf0a8e7b" InformativeScreenshot="5a8b5b05f27bb9834cca6bb863c88746.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Clockwork Free - Jira' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dtWorklogs]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Key' ReferenceName='Key' ReferenceIdx='0'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Key Url' ReferenceName='Key Url' ReferenceIdx='1'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Issue' ReferenceName='Issue' ReferenceIdx='2'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Comment' ReferenceName='Comment' ReferenceIdx='3'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Time spent' ReferenceName='Time spent' ReferenceIdx='4'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='Column-4' ReferenceName='Column-4' ReferenceIdx='5'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Key' attr='fulltext' name2='Key Url' attr2='href' /&gt;&lt;column name='Issue' attr='fulltext' /&gt;&lt;column name='Comment' attr='fulltext' /&gt;&lt;column name='Time spent' attr='fulltext' /&gt;&lt;column name='Column-4' attr='fulltext' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="814,157" sap2010:WorkflowViewState.IdRef="NExtractData_2" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="d3fc6328-6df2-4285-8783-ac9c7810923d" Version="V3">
+                    <uix:NExtractData.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="712, 341, 752, 125" DesignTimeScaleFactor="1" FriendlyName="'KeyIssueCommentTime spe…'" FullSelectorArgument="&lt;webctrl id='clockwork-free*' tag='*' /&gt;&lt;webctrl tag='TABLE' /&gt;" Guid="2691794d-1511-4a2c-bb0d-9acf4d0c5b4c" InformativeScreenshot="5e58a5a44f5377d378fbb57d59cbd3e4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Clockwork Free - Jira' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                    </uix:NExtractData.Target>
+                  </uix:NExtractData>
+                  <If Condition="[dtWorklogs.Rows.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="814,4032" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="780,3677" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtWorklogs]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="738,3406" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                          <ui:ForEachRow.Body>
+                            <ActivityAction x:TypeArguments="sd:DataRow">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="704,3220" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Name="tempLog" />
+                                  <Variable x:TypeArguments="x:String" Name="comments" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap:VirtualizedContainerService.HintSize="662,82" sap2010:WorkflowViewState.IdRef="Assign_21">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[rowIndex]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap2010:Annotation.AnnotationText="String variable to store the comment from the current row." sap:VirtualizedContainerService.HintSize="662,113" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[comments]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[row("Comment").ToString]</InArgument>
+                                  </Assign.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Assign>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="662,143" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;RAW COMMENT :&quot; + comments + vbCrLf + &quot;==================================================================&quot;]" />
+                                <If Condition="[System.Text.RegularExpressions.Regex.IsMatch(comments, &quot;(\r\n|\n\r|\n|\r)&quot;)]" DisplayName="If - check if comments contains bullet points (i.e., contains \n)" sap:VirtualizedContainerService.HintSize="662,1990" sap2010:WorkflowViewState.IdRef="If_4">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="628,1638" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                      <Sequence.Variables>
+                                        <Variable x:TypeArguments="s:String[]" Name="commentArray" />
+                                        <Variable x:TypeArguments="x:String" Name="processedComment" />
+                                      </Sequence.Variables>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap2010:Annotation.AnnotationText="divide the comment string into an array of strings (substrings), each representing a bullet point" DisplayName="Assign - Remove \n" sap:VirtualizedContainerService.HintSize="586,124" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="s:String[]">[commentArray]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="s:String[]">[System.Text.RegularExpressions.Regex.Split(row("Comment").ToString, "(\r\n|\n\r|\n|\r)+").Where(Function(s) Not String.IsNullOrWhiteSpace(s)).Select(Function(s) s.Trim()).ToArray()]</InArgument>
+                                        </Assign.Value>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </Assign>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="586,143" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Join(Environment.NewLine, commentArray) + &quot; || &quot; + commentArray.Length.ToString]" />
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="586,143" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;0 : &quot; + commentArray(0).ToString + Environment.NewLine + &quot;1 : &quot; + commentArray(1).ToString]" />
+                                      <If sap2010:Annotation.AnnotationText="" Condition="[commentArray.Length &gt; 1 AndAlso Not String.IsNullOrWhiteSpace(commentArray(1))]" sap:VirtualizedContainerService.HintSize="586,775" sap2010:WorkflowViewState.IdRef="If_5">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <If.Then>
+                                          <Sequence sap:VirtualizedContainerService.HintSize="552,562" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="x:String">[commentArray(1)]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="x:String">[commentArray(1).TrimStart(vbCrLf.ToCharArray()).TrimStart(vbCr.ToCharArray()).TrimStart(vbLf.ToCharArray()).Trim()]</InArgument>
+                                              </Assign.Value>
+                                            </Assign>
+                                            <If Condition="[commentArray(1).Length &gt; 0]" sap:VirtualizedContainerService.HintSize="510,352" sap2010:WorkflowViewState.IdRef="If_7">
+                                              <If.Then>
+                                                <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_23">
+                                                    <Assign.To>
+                                                      <OutArgument x:TypeArguments="x:String">[commentArray(1)]</OutArgument>
+                                                    </Assign.To>
+                                                    <Assign.Value>
+                                                      <InArgument x:TypeArguments="x:String">[Char.ToLower(commentArray(1)(0)) &amp; commentArray(1).Substring(1)]</InArgument>
+                                                    </Assign.Value>
+                                                  </Assign>
+                                                </Sequence>
+                                              </If.Then>
+                                              <If.Else>
+                                                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_20" />
+                                              </If.Else>
+                                            </If>
+                                          </Sequence>
+                                        </If.Then>
+                                        <If.Else>
+                                          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_16" />
+                                        </If.Else>
+                                      </If>
+                                      <Assign DisplayName="Assign - concatenates all elements of commentArray into a single string, using &quot;, also &quot; as the separator." sap:VirtualizedContainerService.HintSize="586,83" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[processedComment]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(commentArray.Length &gt; 1, 
+                      commentArray(0).Trim() + ", also " + commentArray(1), 
+                      commentArray(0).Trim())]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Assign sap:VirtualizedContainerService.HintSize="586,82" sap2010:WorkflowViewState.IdRef="Assign_20">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[tempLog]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">["- " + processedComment + " - " + row("Issue").ToString]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[tempLog]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">["- " + row("Comment").ToString + " - " + row("Issue").ToString]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                                <If Condition="[rowIndex &lt; dtWorklogs.Rows.Count - 1]" sap:VirtualizedContainerService.HintSize="662,522" sap2010:WorkflowViewState.IdRef="If_3">
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[out_formattedLog]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[out_formattedLog + tempLog + Environment.NewLine]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[out_formattedLog]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[out_formattedLog + tempLog]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                                <Assign sap:VirtualizedContainerService.HintSize="662,82" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[rowIndex]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[rowIndex + 1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEachRow.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:ForEachRow>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="738,143" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Log : &quot; + out_formattedLog]" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,173" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Worklogs empty&quot;]" />
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Close'" sap:VirtualizedContainerService.HintSize="814,157" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d3fc6328-6df2-4285-8783-ac9c7810923d" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://app.clockwork.report/panels/projects/timesheets?is_clockwork_active=false&amp;is_next_gen_project=false&amp;issue_id=&amp;issue_key=&amp;permissions%5BADMINISTER%5D=false&amp;permissions%5BADMINISTER_PROJECTS%5D=true&amp;permissions%5BDELETE_ALL_WORKLOGS%5D=true&amp;permissions%5BDELETE_OWN_WORKLOGS%5D=true&amp;permissions%5BEDIT_ALL_WORKLOGS%5D=true&amp;permissions%5BEDIT_ISSUES%5D=true&amp;permissions%5BEDIT_OWN_WORKLOGS%5D=true&amp;permissions%5BWORK_ON_ISSUES%5D=true&amp;permissions%5Bclockwork-free-cloud__edit-all-working-hours%5D=true&amp;permissions%5Bclockwork-free-cloud__edit-own-working-hours%5D=true&amp;permissions%5Bclockwork-free-cloud__log-work-for-others%5D=true&amp;permissions%5Bclockwork-free-cloud__timesheets%5D=true&amp;permissions%5Bclockwork-free-cloud__view-all-worklogs%5D=true&amp;permissions%5Bclockwork-free-cloud__view-issue-hours%5D=true&amp;project_id=10124&amp;project_key=OT&amp;xdm_e=https%3A%2F%2Fociincentroautomation.atlassian.net&amp;xdm_c=channel-clockwork-free-cloud__project-timesheet-item&amp;cp=&amp;xdm_deprecated_addon_key_do_not_use=clockwork-free-cloud&amp;lic=none&amp;cv=1001.0.0-SNAPSHOT&amp;jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3MTIwMjA6MjRmMzI0MTktZmI2OC00NmQwLTk3NTYtZmRiNWZlMzZjZjIzIiwicXNoIjoiYzVhM2FkYjRmYTFhNmY1OGUxZjEwYzY4ZmM5MTg0ZjFlYzVhOWQyNGQzYWMwYTBmNTRhODYzMWRkYTJkNmMzZCIsImlzcyI6ImJjNTNkOGVhLTNhOWQtM2ZlZS1hNjBmLTM2ZjlmMjZlY2Q5MSIsImNvbnRleHQiOnt9LCJleHAiOjE3MDYwNjIwNDEsImlhdCI6MTcwNjA2MTE0MX0.5H4CdwRBehbNl72rcdqtdhhVadc1dqQ-QU9uqiwCTSU#/reportName=Clockwork%20Timesheet&amp;scope[startingAt]=LAST_31_DAYS_START&amp;scope[endingAt]=LAST_31_DAYS_END&amp;scope[selectedProjects][]=10124&amp;selectedBreakdowns[]=users&amp;period=PERIOD_DAY&amp;estimateColumnsEnabled=false" CvElementArea="1405, 464, 60, 35" CvTextArea="1416, 475, 37, 13" CvTextArgument="Close" CvType="Button" DesignTimeRectangle="1406, 466, 58, 32" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Close'" FullSelectorArgument="&lt;webctrl id='clockwork-free-cloud__project-timesheet-item__738a4f3' tag='IFRAME' /&gt;&lt;webctrl aaname='Close' tag='BUTTON' /&gt;" FuzzyAccuracy="0.91" FuzzySelectorArgument="&lt;webctrl id='clockwork-free*' tag='*' /&gt;&lt;webctrl aaname='Close' tag='BUTTON' type='button' class='css-1l4j2co' check:innerText='Close' /&gt;" Guid="92f14070-6a9c-483d-bc6e-b698fdc940ec" InformativeScreenshot="030e45806d4d570de313171f557f9d82.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Clockwork Free - Jira' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target CvElementArea="1405, 464, 60, 35" CvTextArea="1416, 475, 37, 13" CvTextArgument="Close" CvType="Button" DesignTimeRectangle="1414, 466, 42, 32" ElementType="Text" FriendlyName="'Close'" FullSelectorArgument="&lt;webctrl id='clockwork-free-cloud__project-timesheet-item__738a4f3' tag='IFRAME' /&gt;&lt;webctrl aaname='Close' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='clockwork-free-cloud__project-timesheet-item__738a4f3' tag='IFRAME' /&gt;&lt;webctrl aaname='Close' tag='SPAN' type='' class='css-t5emrf' check:innerText='Close' /&gt;" SearchSteps="FuzzySelector, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,173" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;eobseo imnida&quot;]" />
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1168" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="803bbfcca5bb2f859713063127d8612d.jpg" Selector="&lt;html app='chrome.exe' title='Clockwork Free - Jira' /&gt;" Title="Clockwork Free - Jira" Url="https://ociincentroautomation.atlassian.net/projects/OT?selectedItem=com.atlassian.plugins.atlassian-connect-plugin:clockwork-free-cloud__project-timesheet-item#!reportName=Clockwork%20Timesheet&amp;scope%5BstartingAt%5D=-7&amp;scope%5BendingAt%5D=0&amp;scope%5BselectedProjects%5D%5B%5D=10124&amp;selectedBreakdowns%5B%5D=users&amp;period=PERIOD_DAY&amp;estimateColumnsEnabled=false" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

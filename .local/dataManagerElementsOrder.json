@@ -1,0 +1,55 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Jira.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "commentArray&Sequence_12",
+        "comments&Sequence_9",
+        "isFirstPoint&Sequence_12",
+        "currentPoint&Sequence_15",
+        "firstHeader&Sequence_2",
+        "tempLog&Sequence_9",
+        "rowIndex&Sequence_2",
+        "dtWorklogs&Sequence_2",
+        "name&Sequence_2",
+        "rowOfInterest&Sequence_4",
+        "StrdtJira&Sequence_2",
+        "targetValue&Sequence_2",
+        "targetCol&Sequence_2",
+        "dtJiraClockwork&Sequence_2",
+        "formattedDate&Sequence_2",
+        "currentDate&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_formattedLog"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Xero.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

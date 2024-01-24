@@ -1,0 +1,220 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Xero" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_currentDate" Type="InArgument(s:DateTime)" />
+    <x:Property Name="in_clockValue" Type="InArgument(x:String)" />
+    <x:Property Name="in_formattedLog" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Xero.in_currentDate>
+    <InArgument x:TypeArguments="s:DateTime" />
+  </this:Xero.in_currentDate>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1254,2408</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Xero_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Xero" sap:VirtualizedContainerService.HintSize="592,2343" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Clockwork Free - Jira" sap:VirtualizedContainerService.HintSize="530,2232" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,2015" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="xeroDate" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="https://go.xero.com/app/!psp8H/projects/time-entries" Version="V3" />
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[xeroDate]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[in_currentDate.ToString("ddd ") &amp; in_currentDate.ToString("dd")]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Wed 24'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvTextArea="390, 475, 53, 14" CvTextArgument="Wed 24" CvType="Text" DesignTimeRectangle="8, 157, 0, 0" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Wed 24'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aaname='{0}' tag='SPAN' /&gt;&quot;, xeroDate)]" FuzzyMatches="10000" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl aaname='{0}' tag='SPAN' type='' class='' /&gt;&quot;, xeroDate)]" Guid="5fb2176f-dab9-4720-88ac-28ea74a461a6" ImageBase64="" InformativeScreenshot="d0a4020163fc4b797e5088c367401a2e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'New time entry'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvElementArea="1776, 229, 120, 35" CvTextArea="1788, 239, 95, 16" CvTextArgument="New time entry" CvType="Button" DesignTimeRectangle="1777, 231, 118, 32" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'New time entry'" FullSelectorArgument="&lt;webctrl aaname='New time entry' parentid='shell-app-root' tag='BUTTON' /&gt;" FuzzyAccuracy="0.89" FuzzySelectorArgument="&lt;webctrl aaname='New time entry' parentid='shell-app-root' tag='BUTTON' type='button' class='xui-button xui-button-create xui-button-small' /&gt;" Guid="05d9715a-6fd6-4787-9685-170e22fe3bc3" InformativeScreenshot="92a341b1c2790ae10702747b48dd02a2.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Project'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvElementArea="786, 363, 364, 43" CvType="InputBox" DesignTimeRectangle="789, 365, 358, 38" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT xui-zM7G-L_ZeA-co…'" FullSelectorArgument="&lt;webctrl tag='INPUT' id='xui-zM7G-L_ZeA-control' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' id='xui-zM7G-L_ZeA-control' type='' class='xui-autocompleter--textinput xui-textinput--input xui-textinput--input-medium' aaname='' /&gt;" Guid="426fdbab-ae02-42e2-bed3-0c5df95ca46b" InformativeScreenshot="98aeac51e3a0b7de19950b40cd793e3a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target CvTextArea="787, 344, 46, 16" CvTextArgument="Project" CvType="Text" DesignTimeRectangle="788, 343, 44, 21" ElementType="Text" FriendlyName="'Project'" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='xui-fieldlabel-layout xui-text-label' aaname='Project' check:innerText='Project' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'UI Path'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvTextArea="844, 498, 53, 14" CvTextArgument="UI Path" CvType="Text" DesignTimeRectangle="845, 494, 282, 24" DesignTimeScaleFactor="1" FriendlyName="'UI Path'" FullSelectorArgument="&lt;webctrl tag='SPAN' innertext='*UI Path*' idx='2' /&gt;" FuzzyAccuracy="0.81" FuzzySelectorArgument="&lt;webctrl tag='SPAN' innertext='*UI Path*' type='' class='xui-pickitem--heading xui-pickitem-text-truncated' aaname='' /&gt;" Guid="4e4b76e5-472e-4c1c-95d7-8d85c15ea416" InformativeScreenshot="b4c18cc51a322d5501c1aaf7efec6299.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NSelectItem DisplayName="Select Item 'Choose a task'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="Development - OCI Automation" ScopeIdentifier="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="4">
+                  <x:String>Development - OCI Automation</x:String>
+                  <x:String>Development - Onboarding</x:String>
+                  <x:String>Internal</x:String>
+                  <x:String>Project Management</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvTextArea="804, 473, 98, 14" CvTextArgument="Choose a task" CvType="Text" DesignTimeRectangle="788, 461, 360, 40" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Choose a task'" FullSelectorArgument="&lt;webctrl tag='BUTTON' aaname='Choose a task' id='xui-twfcp8SOUv-control' type='button' /&gt;" FuzzyAccuracy="0.81" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' aaname='Choose a task' id='xui-twfcp8SOUv-control' type='button' class='xui-button xui-select--button xui-select--button-no-variant xui-button-standard xui-button-medium xui-button-fullwidth xui-button-has-icon' /&gt;" Guid="07b1338b-0568-4a63-9d34-180e6cad31e7" ImageBase64="" InformativeScreenshot="11867dd34030190f0c8178b2b739082a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target CvElementArea="785, 460, 363, 43" CvType="InputBox" DesignTimeRectangle="805, 473, 308, 16" ElementType="Text" FriendlyName="'Choose a task'" FullSelectorArgument="&lt;webctrl aaname='Choose a task' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Choose a task' tag='DIV' type='' class='' check:innerText='Choose a task' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Description(optional)'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Text="[in_formattedLog]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvElementArea="785, 554, 366, 47" CvType="InputBox" DesignTimeRectangle="789, 559, 358, 38" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'TEXTAREA description-fi…'" FullSelectorArgument="&lt;webctrl id='description-field' tag='TEXTAREA' aaname='Description(optional)' /&gt;" FuzzySelectorArgument="&lt;webctrl id='description-field' tag='TEXTAREA' aaname='Description(optional)' type='' class='xui-textinput--input xui-textinput--input-medium xui-textinput--input-resize-none' /&gt;" Guid="43b5fad8-9a2a-49ed-8ae0-4576d6516b04" InformativeScreenshot="c9f9ceeb5ff3c9936935fd31b79bc153.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target CvTextArea="787, 538, 135, 16" CvTextArgument="Description (optional)" CvType="Text" DesignTimeRectangle="788, 537, 134, 21" ElementType="Text" FriendlyName="'Description(optional)'" FullSelectorArgument="&lt;webctrl aaname='Description' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Description' tag='LABEL' type='' class='xui-text-label xui-fieldlabel-layout' check:innerText='Description(optional)' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Duration'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Text="[in_clockValue]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvElementArea="783, 748, 368, 46" CvType="InputBox" DesignTimeRectangle="789, 753, 358, 38" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'0:00'" FullSelectorArgument="&lt;webctrl id='duration' tag='INPUT' aaname='Duration' class='xui-textinput--input xui-textinput--input-medium' /&gt;" FuzzySelectorArgument="&lt;webctrl id='duration' tag='INPUT' aaname='Duration' class='xui-textinput--input xui-textinput--input-medium' type='' /&gt;" Guid="4d6eeb8a-a4cf-4c72-997c-0e1977b684f9" InformativeScreenshot="ed4fa00b068df2cf662a0484aedc6d0f.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target CvTextArea="787, 732, 55, 13" CvTextArgument="Duration" CvType="Text" DesignTimeRectangle="788, 731, 53, 21" ElementType="Text" FriendlyName="'Duration'" FullSelectorArgument="&lt;webctrl aaname='Duration' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Duration' tag='LABEL' type='' class='xui-text-label xui-fieldlabel-layout' check:innerText='Duration' /&gt;" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Save'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvElementArea="1078, 992, 72, 43" CvTextArea="1095, 1005, 37, 14" CvTextArgument="Save" CvType="Button" DesignTimeRectangle="1079, 993, 69, 40" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Save'" FullSelectorArgument="&lt;webctrl id='time-entry-modal-save-button-group-save-button' tag='BUTTON' aaname='Save' type='button' /&gt;" FuzzyAccuracy="0.79" FuzzySelectorArgument="&lt;webctrl id='time-entry-modal-save-button-group-save-button' tag='BUTTON' aaname='Save' type='button' class='xui-button xui-actions--primary xui-button-main xui-button-medium' /&gt;" Guid="d0fe8a38-f795-45c0-9a34-a0d0f1802bf6" InformativeScreenshot="ba8bafcb508a23b7cdfd0a7fa5c89223.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1168" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="0257f54e8f9f9bb74f1a65ee748c96d7.jpg" Selector="&lt;html app='chrome.exe' title='Clockwork Free - Jira' /&gt;" Title="Xero | Projects | Time entries" Url="https://ociincentroautomation.atlassian.net/projects/OT?selectedItem=com.atlassian.plugins.atlassian-connect-plugin:clockwork-free-cloud__project-timesheet-item#!reportName=Clockwork%20Timesheet&amp;scope%5BstartingAt%5D=-7&amp;scope%5BendingAt%5D=0&amp;scope%5BselectedProjects%5D%5B%5D=10124&amp;selectedBreakdowns%5B%5D=users&amp;period=PERIOD_DAY&amp;estimateColumnsEnabled=false" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
