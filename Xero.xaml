@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1254,2408</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1254,2410</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Xero_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -107,19 +107,19 @@
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Xero" sap:VirtualizedContainerService.HintSize="592,2343" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Xero" sap:VirtualizedContainerService.HintSize="592,2345" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Clockwork Free - Jira" sap:VirtualizedContainerService.HintSize="530,2232" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Clockwork Free - Jira" sap:VirtualizedContainerService.HintSize="530,2234" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,2015" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,2017" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="xeroDate" />
             </Sequence.Variables>
@@ -137,9 +137,9 @@
                 <InArgument x:TypeArguments="x:String">[in_currentDate.ToString("ddd ") &amp; in_currentDate.ToString("dd")]</InArgument>
               </Assign.Value>
             </Assign>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Wed 24'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Version="V3">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Thu 25'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Version="V3">
               <uix:NClick.Target>
-                <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvTextArea="390, 475, 53, 14" CvTextArgument="Wed 24" CvType="Text" DesignTimeRectangle="8, 157, 0, 0" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Wed 24'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aaname='{0}' tag='SPAN' /&gt;&quot;, xeroDate)]" FuzzyMatches="10000" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl aaname='{0}' tag='SPAN' type='' class='' /&gt;&quot;, xeroDate)]" Guid="5fb2176f-dab9-4720-88ac-28ea74a461a6" ImageBase64="" InformativeScreenshot="d0a4020163fc4b797e5088c367401a2e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+                <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-25&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvTextArea="390, 505, 49, 14" CvType="Text" DesignTimeRectangle="392, 501, 47, 24" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Thu 25'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl aaname='{0}' tag='SPAN' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ul&amp;gt;li&amp;gt;button&amp;gt;span&amp;gt;span' /&gt;&quot;, xeroDate)]" Guid="d4105db5-f48d-4327-97be-c3fabb8981bf" InformativeScreenshot="834f4d809d1fb0b7da168e631f9039c8.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
               </uix:NClick.Target>
             </uix:NClick>
             <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'New time entry'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9b915d7e-a4a6-498d-8cf5-4582ef9ab3ba" Version="V3">
@@ -151,7 +151,7 @@
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvElementArea="786, 363, 364, 43" CvType="InputBox" DesignTimeRectangle="789, 365, 358, 38" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT xui-zM7G-L_ZeA-co…'" FullSelectorArgument="&lt;webctrl tag='INPUT' id='xui-zM7G-L_ZeA-control' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' id='xui-zM7G-L_ZeA-control' type='' class='xui-autocompleter--textinput xui-textinput--input xui-textinput--input-medium' aaname='' /&gt;" Guid="426fdbab-ae02-42e2-bed3-0c5df95ca46b" InformativeScreenshot="98aeac51e3a0b7de19950b40cd793e3a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target CvTextArea="787, 344, 46, 16" CvTextArgument="Project" CvType="Text" DesignTimeRectangle="788, 343, 44, 21" ElementType="Text" FriendlyName="'Project'" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='xui-fieldlabel-layout xui-text-label' aaname='Project' check:innerText='Project' /&gt;" SearchSteps="FuzzySelector, CV" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
@@ -175,7 +175,7 @@
               <uix:NSelectItem.Target>
                 <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvTextArea="804, 473, 98, 14" CvTextArgument="Choose a task" CvType="Text" DesignTimeRectangle="788, 461, 360, 40" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Choose a task'" FullSelectorArgument="&lt;webctrl tag='BUTTON' aaname='Choose a task' id='xui-twfcp8SOUv-control' type='button' /&gt;" FuzzyAccuracy="0.81" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' aaname='Choose a task' id='xui-twfcp8SOUv-control' type='button' class='xui-button xui-select--button xui-select--button-no-variant xui-button-standard xui-button-medium xui-button-fullwidth xui-button-has-icon' /&gt;" Guid="07b1338b-0568-4a63-9d34-180e6cad31e7" ImageBase64="" InformativeScreenshot="11867dd34030190f0c8178b2b739082a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target CvElementArea="785, 460, 363, 43" CvType="InputBox" DesignTimeRectangle="805, 473, 308, 16" ElementType="Text" FriendlyName="'Choose a task'" FullSelectorArgument="&lt;webctrl aaname='Choose a task' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Choose a task' tag='DIV' type='' class='' check:innerText='Choose a task' /&gt;" SearchSteps="FuzzySelector, CV" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
@@ -186,7 +186,7 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvElementArea="785, 554, 366, 47" CvType="InputBox" DesignTimeRectangle="789, 559, 358, 38" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'TEXTAREA description-fi…'" FullSelectorArgument="&lt;webctrl id='description-field' tag='TEXTAREA' aaname='Description(optional)' /&gt;" FuzzySelectorArgument="&lt;webctrl id='description-field' tag='TEXTAREA' aaname='Description(optional)' type='' class='xui-textinput--input xui-textinput--input-medium xui-textinput--input-resize-none' /&gt;" Guid="43b5fad8-9a2a-49ed-8ae0-4576d6516b04" InformativeScreenshot="c9f9ceeb5ff3c9936935fd31b79bc153.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target CvTextArea="787, 538, 135, 16" CvTextArgument="Description (optional)" CvType="Text" DesignTimeRectangle="788, 537, 134, 21" ElementType="Text" FriendlyName="'Description(optional)'" FullSelectorArgument="&lt;webctrl aaname='Description' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Description' tag='LABEL' type='' class='xui-text-label xui-fieldlabel-layout' check:innerText='Description(optional)' /&gt;" SearchSteps="FuzzySelector, CV" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
@@ -197,7 +197,7 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="https://go.xero.com/app/!psp8H/projects/time-entries?date=2024-01-24&amp;staff=60fe2d66-9a78-4c4b-b96d-153f9b41837a" CvElementArea="783, 748, 368, 46" CvType="InputBox" DesignTimeRectangle="789, 753, 358, 38" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'0:00'" FullSelectorArgument="&lt;webctrl id='duration' tag='INPUT' aaname='Duration' class='xui-textinput--input xui-textinput--input-medium' /&gt;" FuzzySelectorArgument="&lt;webctrl id='duration' tag='INPUT' aaname='Duration' class='xui-textinput--input xui-textinput--input-medium' type='' /&gt;" Guid="4d6eeb8a-a4cf-4c72-997c-0e1977b684f9" InformativeScreenshot="ed4fa00b068df2cf662a0484aedc6d0f.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Xero | Projects | Time entries' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target CvTextArea="787, 732, 55, 13" CvTextArgument="Duration" CvType="Text" DesignTimeRectangle="788, 731, 53, 21" ElementType="Text" FriendlyName="'Duration'" FullSelectorArgument="&lt;webctrl aaname='Duration' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Duration' tag='LABEL' type='' class='xui-text-label xui-fieldlabel-layout' check:innerText='Duration' /&gt;" SearchSteps="FuzzySelector, CV" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>

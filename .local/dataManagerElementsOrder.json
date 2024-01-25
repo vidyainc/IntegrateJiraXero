@@ -11,7 +11,11 @@
     {
       "Path": "Main.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [],
+      "VariablesSectionElementsOrder": [
+        "currentDate&Sequence_1",
+        "clockValue&Sequence_1",
+        "formattedLog&Sequence_1"
+      ],
       "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -20,10 +24,10 @@
       "Path": "Jira.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "jiraDate&Sequence_2",
+        "processedComment&Sequence_12",
         "commentArray&Sequence_12",
         "comments&Sequence_9",
-        "isFirstPoint&Sequence_12",
-        "currentPoint&Sequence_15",
         "firstHeader&Sequence_2",
         "tempLog&Sequence_9",
         "rowIndex&Sequence_2",
@@ -31,13 +35,12 @@
         "name&Sequence_2",
         "rowOfInterest&Sequence_4",
         "StrdtJira&Sequence_2",
-        "targetValue&Sequence_2",
         "targetCol&Sequence_2",
-        "dtJiraClockwork&Sequence_2",
-        "formattedDate&Sequence_2",
-        "currentDate&Sequence_2"
+        "dtJiraClockwork&Sequence_2"
       ],
       "ArgumentsSectionElementsOrder": [
+        "out_currentDate",
+        "out_clockValue",
         "out_formattedLog"
       ],
       "ConstantsSectionElementsOrder": [],
@@ -46,8 +49,14 @@
     {
       "Path": "Xero.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [],
-      "ArgumentsSectionElementsOrder": [],
+      "VariablesSectionElementsOrder": [
+        "xeroDate&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_formattedLog",
+        "in_clockValue",
+        "in_currentDate"
+      ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }
