@@ -24,6 +24,8 @@
       "Path": "Jira.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "selectedKey&Sequence_2",
+        "dateOptions&Sequence_2",
         "jiraDate&Sequence_2",
         "processedComment&Sequence_12",
         "commentArray&Sequence_12",
