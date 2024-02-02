@@ -13,6 +13,8 @@ This UiPath project automates specific tasks between Jira and Xero applications,
 - UiPath Studio installed and configured.
 - **`Access to Jira and Xero with necessary permissions to fetch tasks and log time entries.`**
 
+## Execution
+**Execution**: Run the Main workflow. Monitor the execution log for any errors and ensure data is correctly processed and logged in Xero.
 
 ## Workflow Detail
 ### Main Workflow (`Main.xaml`)
@@ -36,10 +38,6 @@ This UiPath project automates specific tasks between Jira and Xero applications,
 - Includes if conditions to manage exceptions during web interactions.
 - Utilizes conditional logic to handle unexpected UI changes or data discrepancies.
 - Employs logging activities to record execution details for troubleshooting.
-
-## Setup and Execution
-1. **Configuration**: Update the workflow variables with Jira and Xero access credentials and URLs.
-2. **Execution**: Run the Main workflow. Monitor the execution log for any errors and ensure data is correctly processed and logged in Xero.
 
 ## Support and Contribution
 - For support, raise an issue within the GitHub repository or reach out to the repository maintainers.
