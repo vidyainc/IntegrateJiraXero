@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Jira" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Jira" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
     <x:Property Name="out_formattedLog" Type="OutArgument(x:String)" />
@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1254,8920</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1038,10702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Jira_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -57,6 +57,7 @@
       <x:String>UiPath.UIAutomationNext.Contracts</x:String>
       <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
       <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Runtime.CompilerServices</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -133,21 +134,27 @@
       <AssemblyReference>System.Linq.Parallel</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Runtime.CompilerServices.VisualC</AssemblyReference>
+      <AssemblyReference>System.Runtime.CompilerServices.Unsafe</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Jira" sap:VirtualizedContainerService.HintSize="1048,8855" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Jira" sap:VirtualizedContainerService.HintSize="1048,10637" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="idx" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Clockwork Free - Jira" sap:VirtualizedContainerService.HintSize="986,8744" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" ScopeGuid="d3fc6328-6df2-4285-8783-ac9c7810923d" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="AnyScreen" sap:VirtualizedContainerService.HintSize="986,10526" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" ScopeGuid="d3fc6328-6df2-4285-8783-ac9c7810923d" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="952,8527" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="952,10309" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="jiraDate" />
               <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dtJiraClockwork" />
@@ -157,8 +164,11 @@
               <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dtWorklogs" />
               <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
               <Variable x:TypeArguments="x:String" Name="firstHeader" />
-              <Variable x:TypeArguments="scg:Dictionary(x:String, s:DateTime)" Name="dateOptions" />
+              <Variable x:TypeArguments="scg:Dictionary(x:String, s:Tuple(s:DateTime, x:Int32))" Name="dateOptions" />
               <Variable x:TypeArguments="x:String" Name="selectedKey" />
+              <Variable x:TypeArguments="s:Tuple(s:DateTime, x:Int32)" Name="tempTuple" />
+              <Variable x:TypeArguments="scg:Dictionary(x:String, s:Tuple(s:DateTime, x:Int32))" Name="zahraDateOptions" />
+              <Variable x:TypeArguments="scg:Dictionary(x:String, s:Tuple(s:DateTime, x:Int32))" Name="vidyaDateOptions" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -166,75 +176,162 @@
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="890,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="https://ociincentroautomation.atlassian.net/projects/OT?selectedItem=com.atlassian.plugins.atlassian-connect-plugin:clockwork-free-cloud__project-timesheet-item#!reportName=Clockwork%20Timesheet&amp;scope%5BstartingAt%5D=-7&amp;scope%5BendingAt%5D=0&amp;scope%5BselectedProjects%5D%5B%5D=10124&amp;selectedBreakdowns%5B%5D=users&amp;period=PERIOD_DAY&amp;estimateColumnsEnabled=false" Version="V3" />
             <uix:NNavigateBrowser Action="Refresh" DisplayName="Navigate Browser - Refresh" sap:VirtualizedContainerService.HintSize="890,82" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_1" Version="V3" />
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="890,273" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,194" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_24">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="scg:Dictionary(x:String, s:DateTime)">[dateOptions]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="scg:Dictionary(x:String, s:DateTime)" xml:space="preserve">[New Dictionary(Of String, DateTime) From {
-    {"Now", Now},
-    {"Yesterday", Now.AddDays(-1)},
-    {"2 Days Ago", Now.AddDays(-2)},
-    {"3 Days Ago", Now.AddDays(-3)},
-    {"4 Days Ago", Now.AddDays(-4)}
+            <Assign sap:VirtualizedContainerService.HintSize="890,83" sap2010:WorkflowViewState.IdRef="Assign_30">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, s:Tuple(s:DateTime, x:Int32))">[vidyaDateOptions]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, s:Tuple(s:DateTime, x:Int32))" xml:space="preserve">[New Dictionary(Of String, Tuple(Of DateTime, Integer)) From {
+    {"Now", Tuple.Create(Now, 41)},
+    {"Yesterday", Tuple.Create(Now.AddDays(-1), 40)},
+    {"2 Days Ago", Tuple.Create(Now.AddDays(-2), 39)},
+    {"3 Days Ago", Tuple.Create(Now.AddDays(-3), 38)},
+    {"4 Days Ago", Tuple.Create(Now.AddDays(-4), 37)}
 }]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                </Sequence>
-              </ui:CommentOut.Body>
-            </ui:CommentOut>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="890,482" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="890,83" sap2010:WorkflowViewState.IdRef="Assign_34">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, s:Tuple(s:DateTime, x:Int32))">[zahraDateOptions]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, s:Tuple(s:DateTime, x:Int32))" xml:space="preserve">[New Dictionary(Of String, Tuple(Of DateTime, Integer)) From {
+    {"Now", Tuple.Create(Now, 33)},
+    {"Yesterday", Tuple.Create(Now.AddDays(-1), 32)},
+    {"2 Days Ago", Tuple.Create(Now.AddDays(-2), 31)},
+    {"3 Days Ago", Tuple.Create(Now.AddDays(-3), 30)},
+    {"4 Days Ago", Tuple.Create(Now.AddDays(-4), 29)}
+}]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="890,292" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Pick your name bestie:" Options="[{&quot;Fathimah Azzahra&quot;, &quot;Vidya Chandradev&quot;}]" Title="Who you??">
+              <ui:InputDialog.Result>
+                <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
+              </ui:InputDialog.Result>
+            </ui:InputDialog>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="890,482" sap2010:WorkflowViewState.IdRef="CommentOut_10">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,403" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,403" sap2010:WorkflowViewState.IdRef="Sequence_32">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="388,292" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Pick the date bestie :" Options="[dateOptions.Keys.ToArray()]" Title="Input date please">
+                  <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="388,292" sap2010:WorkflowViewState.IdRef="InputDialog_5" IsPassword="False" Label="[&quot;ONLY FOR CURRENT DAY: &quot; + out_currentDate.ToString(&quot;dddd, dd MMMM yyyy&quot;) + vbCrLf + vbCrLf + &quot;==========================================&quot; + vbCrLf + vbCrLf + &quot;Pick your name bestie:&quot;]" Options="[{&quot;Fathimah Azzahra&quot;, &quot;Vidya Chandradev&quot;}]" Title="Who you??">
                     <ui:InputDialog.Result>
-                      <OutArgument x:TypeArguments="x:String">[selectedKey]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
                     </ui:InputDialog.Result>
                   </ui:InputDialog>
                 </Sequence>
               </ui:CommentOut.Body>
             </ui:CommentOut>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="890,272" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+            <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="890,930" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+              <ui:IfElseIf.ConditionBlocks>
+                <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                  <ui:IfElseIfBlock BlockType="If" Condition="[name.Contains(&quot;Vidya&quot;)]">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_35">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="scg:Dictionary(x:String, s:Tuple(s:DateTime, x:Int32))">[dateOptions]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, s:Tuple(s:DateTime, x:Int32))">[vidyaDateOptions]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="ElseIf" Condition="[name.Contains(&quot;Fathimah&quot;)]">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_36">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="scg:Dictionary(x:String, s:Tuple(s:DateTime, x:Int32))">[dateOptions]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, s:Tuple(s:DateTime, x:Int32))">[zahraDateOptions]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="Else">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,186" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="388,75" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;NOPE&quot;]" />
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                </sc:BindingList>
+              </ui:IfElseIf.ConditionBlocks>
+            </ui:IfElseIf>
+            <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="890,292" sap2010:WorkflowViewState.IdRef="InputDialog_4" IsPassword="False" Label="Pick the date bestie :" Options="[dateOptions.Keys.ToArray()]" Title="Input date please">
+              <ui:InputDialog.Result>
+                <OutArgument x:TypeArguments="x:String">[selectedKey]</OutArgument>
+              </ui:InputDialog.Result>
+            </ui:InputDialog>
+            <Assign sap:VirtualizedContainerService.HintSize="890,82" sap2010:WorkflowViewState.IdRef="Assign_32">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:Tuple(s:DateTime, x:Int32)">[tempTuple]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:Tuple(s:DateTime, x:Int32)">[dateOptions(selectedKey)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="890,82" sap2010:WorkflowViewState.IdRef="Assign_31">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:DateTime">[out_currentDate]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:DateTime">[tempTuple.Item1]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="890,82" sap2010:WorkflowViewState.IdRef="Assign_33">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[idx]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[tempTuple.Item2.ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="890,143" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Name : &quot; + name + &quot; and Idx : &quot; + idx]" />
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="890,272" sap2010:WorkflowViewState.IdRef="CommentOut_9">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_29">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_25">
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_29">
                     <Assign.To>
                       <OutArgument x:TypeArguments="s:DateTime">[out_currentDate]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="s:DateTime">[dateOptions(selectedKey)]</InArgument>
+                      <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
                     </Assign.Value>
                   </Assign>
                 </Sequence>
               </ui:CommentOut.Body>
             </ui:CommentOut>
-            <Assign sap:VirtualizedContainerService.HintSize="890,82" sap2010:WorkflowViewState.IdRef="Assign_26">
-              <Assign.To>
-                <OutArgument x:TypeArguments="s:DateTime">[out_currentDate]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
-              </Assign.Value>
-            </Assign>
             <Assign sap:VirtualizedContainerService.HintSize="890,82" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[jiraDate]</OutArgument>
@@ -266,11 +363,6 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
-            <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="890,292" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;ONLY FOR CURRENT DAY: &quot; + out_currentDate.ToString(&quot;dddd, dd MMMM yyyy&quot;) + vbCrLf + vbCrLf + &quot;==========================================&quot; + vbCrLf + vbCrLf + &quot;Pick your name bestie:&quot;]" Options="[{&quot;Fathimah Azzahra&quot;, &quot;Vidya Chandradev&quot;}]" Title="Who you??">
-              <ui:InputDialog.Result>
-                <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
-              </ui:InputDialog.Result>
-            </ui:InputDialog>
             <Assign sap:VirtualizedContainerService.HintSize="890,82" sap2010:WorkflowViewState.IdRef="Assign_12">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[firstHeader]</OutArgument>
@@ -335,7 +427,7 @@
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="814,143" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Clock Value : &quot; + out_clockValue + &quot; and Current Date : &quot; + jiraDate]" />
                   <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Click Clockwork based " sap:VirtualizedContainerService.HintSize="814,157" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d3fc6328-6df2-4285-8783-ac9c7810923d" Version="V3">
                     <uix:NClick.Target>
-                      <uix:TargetAnchorable BrowserURL="https://app.clockwork.report/panels/projects/timesheets?is_clockwork_active=false&amp;is_next_gen_project=false&amp;issue_id=&amp;issue_key=&amp;permissions%5BADMINISTER%5D=false&amp;permissions%5BADMINISTER_PROJECTS%5D=true&amp;permissions%5BDELETE_ALL_WORKLOGS%5D=true&amp;permissions%5BDELETE_OWN_WORKLOGS%5D=true&amp;permissions%5BEDIT_ALL_WORKLOGS%5D=true&amp;permissions%5BEDIT_ISSUES%5D=true&amp;permissions%5BEDIT_OWN_WORKLOGS%5D=true&amp;permissions%5BWORK_ON_ISSUES%5D=true&amp;permissions%5Bclockwork-free-cloud__edit-all-working-hours%5D=true&amp;permissions%5Bclockwork-free-cloud__edit-own-working-hours%5D=true&amp;permissions%5Bclockwork-free-cloud__log-work-for-others%5D=true&amp;permissions%5Bclockwork-free-cloud__timesheets%5D=true&amp;permissions%5Bclockwork-free-cloud__view-all-worklogs%5D=true&amp;permissions%5Bclockwork-free-cloud__view-issue-hours%5D=true&amp;project_id=10124&amp;project_key=OT&amp;xdm_e=https%3A%2F%2Fociincentroautomation.atlassian.net&amp;xdm_c=channel-clockwork-free-cloud__project-timesheet-item&amp;cp=&amp;xdm_deprecated_addon_key_do_not_use=clockwork-free-cloud&amp;lic=none&amp;cv=1001.0.0-SNAPSHOT&amp;jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3MTIwMjA6MjRmMzI0MTktZmI2OC00NmQwLTk3NTYtZmRiNWZlMzZjZjIzIiwicXNoIjoiYzVhM2FkYjRmYTFhNmY1OGUxZjEwYzY4ZmM5MTg0ZjFlYzVhOWQyNGQzYWMwYTBmNTRhODYzMWRkYTJkNmMzZCIsImlzcyI6ImJjNTNkOGVhLTNhOWQtM2ZlZS1hNjBmLTM2ZjlmMjZlY2Q5MSIsImNvbnRleHQiOnt9LCJleHAiOjE3MDYxNjgyMjMsImlhdCI6MTcwNjE2NzMyM30._hkteHklm_9Jm4H0y9rRBFKV7Ao687A72aPj7CgaCsA#/reportName=Clockwork%20Timesheet&amp;scope[startingAt]=-7&amp;scope[endingAt]=0&amp;scope[selectedProjects][]=10124&amp;selectedBreakdowns[]=users&amp;period=PERIOD_DAY&amp;estimateColumnsEnabled=false" CvTextArea="1005, 741, 35, 13" CvType="Text" DesignTimeRectangle="1053, 723, 60, 50" DesignTimeScaleFactor="1" FriendlyName="'02:00'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl id='clockwork-free*' tag='*' /&gt;&lt;webctrl parentid='content' tag='DIV' class='timesheet-table-module__cell___2wtBw timesheet-table-module__hoverContainer___wrkeB timesheet-table-module__highlight___3Qvls' innertext='{0}' /&gt;&quot;, out_clockValue)]" Guid="f1378875-3952-44aa-949d-189caba0429a" InformativeScreenshot="49db5b623fa0f9f6a72d38e5e4ce4983.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Clockwork Free - Jira' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                      <uix:TargetAnchorable BrowserURL="https://app.clockwork.report/panels/projects/timesheets?is_clockwork_active=false&amp;is_next_gen_project=false&amp;issue_id=&amp;issue_key=&amp;permissions%5BADMINISTER%5D=false&amp;permissions%5BADMINISTER_PROJECTS%5D=true&amp;permissions%5BDELETE_ALL_WORKLOGS%5D=true&amp;permissions%5BDELETE_OWN_WORKLOGS%5D=true&amp;permissions%5BEDIT_ALL_WORKLOGS%5D=true&amp;permissions%5BEDIT_ISSUES%5D=true&amp;permissions%5BEDIT_OWN_WORKLOGS%5D=true&amp;permissions%5BWORK_ON_ISSUES%5D=true&amp;permissions%5Bclockwork-free-cloud__edit-all-working-hours%5D=true&amp;permissions%5Bclockwork-free-cloud__edit-own-working-hours%5D=true&amp;permissions%5Bclockwork-free-cloud__log-work-for-others%5D=true&amp;permissions%5Bclockwork-free-cloud__timesheets%5D=true&amp;permissions%5Bclockwork-free-cloud__view-all-worklogs%5D=true&amp;permissions%5Bclockwork-free-cloud__view-issue-hours%5D=true&amp;project_id=10124&amp;project_key=OT&amp;xdm_e=https%3A%2F%2Fociincentroautomation.atlassian.net&amp;xdm_c=channel-clockwork-free-cloud__project-timesheet-item&amp;cp=&amp;xdm_deprecated_addon_key_do_not_use=clockwork-free-cloud&amp;lic=none&amp;cv=1001.0.0-SNAPSHOT&amp;jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3MTIwMjA6MjRmMzI0MTktZmI2OC00NmQwLTk3NTYtZmRiNWZlMzZjZjIzIiwicXNoIjoiYzVhM2FkYjRmYTFhNmY1OGUxZjEwYzY4ZmM5MTg0ZjFlYzVhOWQyNGQzYWMwYTBmNTRhODYzMWRkYTJkNmMzZCIsImlzcyI6ImJjNTNkOGVhLTNhOWQtM2ZlZS1hNjBmLTM2ZjlmMjZlY2Q5MSIsImNvbnRleHQiOnt9LCJleHAiOjE3MDY4NDY5MjMsImlhdCI6MTcwNjg0NjAyM30.HoU11hHfZFRYD1Fw24c-TgTzqJm7NMIOrNq2xBOOQFo#/reportName=Clockwork%20Timesheet&amp;scope[startingAt]=-7&amp;scope[endingAt]=0&amp;scope[selectedProjects][]=10124&amp;selectedBreakdowns[]=users&amp;period=PERIOD_DAY&amp;estimateColumnsEnabled=false" CvTextArea="1005, 691, 35, 13" CvTextArgument="[out_clockValue]" CvType="Text" DesignTimeRectangle="993, 673, 60, 50" DesignTimeScaleFactor="1" FriendlyName="'01:00'" FullSelectorArgument="[string.Format(&quot;&lt;webctrl id='clockwork-free-cloud__project-timesheet-item__*' tag='IFRAME' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='{0}' parentid='content' tag='DIV' /&gt;&quot;, idx)]" FuzzyAccuracy="1" FuzzySelectorArgument="&lt;webctrl id='clockwork-free-cloud__project-timesheet-item__2add5da1' tag='IFRAME' /&gt;&lt;webctrl type='' class='timesheet-table-module__cell___2wtBw timesheet-table-module__hoverContainer___wrkeB' parentid='content' tag='DIV' aaname=''  /&gt;" Guid="9b589eb9-1b19-4802-aa5c-4c4fd695a14c" InformativeScreenshot="bf6d9246285415a24cc35c58215de0f3.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Clockwork Free - Jira' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
                     </uix:NClick.Target>
                   </uix:NClick>
                   <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dtWorklogs]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Key' ReferenceName='Key' ReferenceIdx='0'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Key Url' ReferenceName='Key Url' ReferenceIdx='1'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Issue' ReferenceName='Issue' ReferenceIdx='2'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Comment' ReferenceName='Comment' ReferenceIdx='3'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Time spent' ReferenceName='Time spent' ReferenceIdx='4'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='Column-4' ReferenceName='Column-4' ReferenceIdx='5'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Key' attr='fulltext' name2='Key Url' attr2='href' /&gt;&lt;column name='Issue' attr='fulltext' /&gt;&lt;column name='Comment' attr='fulltext' /&gt;&lt;column name='Time spent' attr='fulltext' /&gt;&lt;column name='Column-4' attr='fulltext' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="814,157" sap2010:WorkflowViewState.IdRef="NExtractData_2" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="d3fc6328-6df2-4285-8783-ac9c7810923d" Version="V3">
@@ -604,7 +696,7 @@
         </ActivityAction>
       </uix:NApplicationCard.Body>
       <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="-8, -8, 1936, 1168" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="803bbfcca5bb2f859713063127d8612d.jpg" Selector="&lt;html app='chrome.exe' title='Clockwork Free - Jira' /&gt;" Title="Clockwork Free - Jira" Url="https://ociincentroautomation.atlassian.net/projects/OT?selectedItem=com.atlassian.plugins.atlassian-connect-plugin:clockwork-free-cloud__project-timesheet-item#!reportName=Clockwork%20Timesheet&amp;scope%5BstartingAt%5D=-7&amp;scope%5BendingAt%5D=0&amp;scope%5BselectedProjects%5D%5B%5D=10124&amp;selectedBreakdowns%5B%5D=users&amp;period=PERIOD_DAY&amp;estimateColumnsEnabled=false" />
+        <uix:TargetApp Area="-8, -8, 1936, 1168" BrowserType="Chrome" ContentHash="IB4bHyRF1UebabgI9gA1ig" IconBase64="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" InformativeScreenshot="803bbfcca5bb2f859713063127d8612d.jpg" Reference="jS4XutsNuUmKqoFQ2npEAw/dwY8iES7J0KyI4hG4L3cXw" Selector="&lt;html app='chrome.exe' url='*' /&gt;" Title="Clockwork Free - Jira" Url="*" />
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
   </Sequence>
